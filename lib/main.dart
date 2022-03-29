@@ -1,5 +1,6 @@
-import 'package:chat/screens/chat.dart';
-import 'package:chat/screens/home.dart';
+import 'package:chat/chatscreen.dart';
+
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -16,19 +17,18 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
+  static final String title = 'Firebase Chat';
 
   
-   MyApp({Key? key}) : super(key: key);
 
-  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
 
-  // This widget is the root of your application.
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      
-      home: ChatPage()
-    );
-  }
+  Widget build(BuildContext context) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: title,
+        theme: ThemeData(primarySwatch: Colors.deepOrange),
+        home: ChatScreen('username', 'name'),
+      );
 }
 
