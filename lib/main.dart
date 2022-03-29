@@ -1,8 +1,10 @@
 import 'package:chat/chatscreen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +19,11 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  static final String title = 'Firebase Chat';
+
+  CollectionReference abc = FirebaseFirestore.instance.collection('chatrooms');
+   String title = 'Firebase Chat';
+  // String userData= abc.id;
+  
 
   
 
@@ -28,7 +34,11 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: title,
         theme: ThemeData(primarySwatch: Colors.deepOrange),
-        home: ChatScreen('username', 'name'),
+        
+        home: chatscreen(
+                                // chatRoomId: 'PAebTTuaISad9LIRgFUG',
+                                // userData:userData?["name"]
+                              ),
       );
 }
 
